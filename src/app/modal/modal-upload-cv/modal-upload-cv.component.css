@@ -1,0 +1,30 @@
+.btn-upload{
+    padding: 15px;
+    font-size: 1rem;
+    margin-left: 20px;
+}
+
+label{
+    font-size: 0.9rem;
+}
+
+.form-upload{
+    position: relative;
+}
+
+.btn-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+::placeholder{
+    font-size: 0.9rem;
+}
+.btn-submit {
+    color: white;
+    background: #ff6638
+}
+.btn-disabled {
+    opacity: 0.6;
+}

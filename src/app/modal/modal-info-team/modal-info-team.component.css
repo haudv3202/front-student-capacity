@@ -1,0 +1,97 @@
+p,h3{
+  margin-bottom: 0;
+}
+
+.icon-add-team {
+  padding: 10px 9px;
+  color: white;
+  background-color:  var(--primary);
+  border-radius: 50px;
+  font-size: 13px;
+}
+
+.bg-warn{
+  background-color: var(--primary);
+}
+
+.header-team-user-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.header-team-user-edit {
+  width: 250px;
+  cursor: pointer;
+}
+
+.body-team-user-box {
+  margin-top: 20px;
+}
+
+.header-team-user-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border:3px solid var(--primary);
+}
+
+.item-member-img {
+  height: 30px;
+  object-fit: cover;
+}
+
+.member-item-img {
+  width: 40px;
+  max-height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.member-item-name {
+  margin-top: 3px;
+
+}
+
+.item-member-img {
+  height: 30px;
+  object-fit: cover;
+}
+
+th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn-add-member {
+  border: 1px solid var(--primary-color);
+}
+
+.table-team-info {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.table-team-info::-webkit-scrollbar{
+  width: 3px;
+  background-color: rgb(235, 232, 232);
+}
+
+.table-team-info::-webkit-scrollbar-thumb{
+  background-color: var(--primary);
+  border-radius: 6px;
+}
+
+.text-algin-left{
+  text-align: left !important;
+  padding-left: 30px;
+}
+
+
+.table-member-th {
+  font-size: 14px;
+  font-weight: bold;
+}

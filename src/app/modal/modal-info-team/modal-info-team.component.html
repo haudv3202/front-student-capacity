@@ -1,0 +1,90 @@
+<div class="border-bottom d-flex justify-content-between align-items-center pb-2">
+    <div class="">
+        <h3 class="fs-5 mb-2 primary-color">Chi tiết đội thi</h3>
+        <p style="margin-top: -12px;" class="color-gray">Xem thông tin các thành viên</p>
+    </div>
+    <div class="">
+        <button  *ngIf="statusTeamDetail && statusLeader == true" (click)="openListMemberJoinTeam()" class="my-btn-primary my-btn-s">Thêm thành viên</button>
+    </div>
+</div>
+<div *ngIf="statusTeamDetail" class="body-team-user-box text-center">
+    <div class="header-team-user-box">
+        <img [src]="teamDetail.image || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMV97UpeAbbPPiPpJz8iFsmgeusjg_pVfTscc75Hm18KTA6np6O7Tro2YAaooQDdqq_zk&usqp=CAU'" alt="" class="header-team-user-img">
+        <h3 class="header-team-user-name mt-2 color-blue fw-bold">{{teamDetail.name}}</h3>
+        <div class="header-team-user-edit-box">
+            <p *ngIf=" statusLeader==true" (click)="openFormEditTeam()" class="header-team-user-edit" style="width:200px"><i
+                    class="fas fa-pen"></i>
+                Sửa thông tin đội</p>
+        </div>
+    </div>
+
+    <div class=" table-team-info my-3">
+        <table mat-table class=" w-100 example-container" [dataSource]="arrayMembers">
+
+            <div class=" example-table-container">
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef class="text-center table-member-th"> STT </th>
+                    <td mat-cell *matCellDef="let element"> {{configFunctionService.indexTable(element.id ,
+                        arrayMembers ,0 ,0)}}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef class="text-center table-member-th"> Tên </th>
+                    <td mat-cell *matCellDef="let element" class="text-algin-left"> {{element.name}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="image">
+                    <th mat-header-cell *matHeaderCellDef class="text-center table-member-th"> Ảnh</th>
+                    <td mat-cell *matCellDef="let element">
+                       <app-avatar [avatar]="element.avatar"></app-avatar>
+                    </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef class="text-center table-member-th"> Email </th>
+                    <td mat-cell *matCellDef="let element" class="text-algin-left"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="bot">
+                    <th mat-header-cell *matHeaderCellDef class=" table-member-th text-center"> Chức danh </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="element.pivot.bot == 1 "  class="team-leader my-3 py-1 bg-warn rounded text-white">
+                            Trưởng nhóm</p>
+                    </td>
+                </ng-container>
+
+
+                <!-- Symbol Column -->
+                <ng-container *ngIf="statusLeader == true" matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef class="text-center table-member-th"> Xóa </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button (click)="removeMembers(element.id)" [disabled]="element.pivot.bot == 1"
+                            mat-raised-button color="warn"><i class="fas fa-user-lock"></i></button>
+                    </td>
+                </ng-container>
+            </div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+<div *ngIf="statusTeamDetail == false" class="text-center mt-3">
+    <ngx-skeleton-loader [theme]=" { 'width' : '100px' , 'height' : '100px' }" appearance="circle">
+    </ngx-skeleton-loader>
+    <br>
+    <ngx-skeleton-loader  [theme]="{ 
+                'width': '150px',
+                'height': '20px'
+              }"></ngx-skeleton-loader>
+    <br>
+    <ngx-skeleton-loader  [theme]="{ 
+                'width': '200px',
+                'height': '30px'
+              }"></ngx-skeleton-loader>
+    <ngx-skeleton-loader count="4" [theme]="{ 'height.px' : 35, 'margin-bottom' : '7px'}" appearance="line">
+    </ngx-skeleton-loader>
+</div>
+<div class="d-flex justify-content-end">
+    <button (click)="closeDialog()"  mat-stroked-button>Đóng</button>
+</div>

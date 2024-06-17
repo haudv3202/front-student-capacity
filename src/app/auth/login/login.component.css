@@ -1,0 +1,36 @@
+.container-fluid {
+  background-image: url("../../../assets/img/login-bg.jpg");
+  background-repeat: no-repeat;
+}
+
+.login-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.btn_login-google {
+  min-width: 320px;
+}
+
+/*
+*   responsive
+*/
+/* -----Mobile----- */
+@media (max-width :767px) {
+  .login-box {
+    height: 40%;
+  }
+
+  .logo_go-img {
+    width: 55%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .btn_login-google {
+    padding: 10px 90px;
+  }
+
+}
